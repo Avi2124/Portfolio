@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Avi Italiya Portfolio</title>
+  <meta name="description" content="Portfolio of Avi Italiya (MCA @ SCET) — React/Node developer. Projects, skills, objective, languages, education, and contact."/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#0b0e14; --surface:#121826; --text:#e6eaf2; --muted:#9aa5b1;
+      --brand:#22c55e; --accent:#7c3aed; --ring:#7c3aed55;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --radius:16px; --maxw:1100px;
+      --space:clamp(12px, 0.9vw + 8px, 24px);
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#f7f8fb; --surface:#fff; --text:#0e141b; --muted:#475569; --shadow:0 8px 24px rgba(15,23,42,.08);}
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      background:
+        radial-gradient(1200px 800px at 80% -20%, rgba(124,58,237,.28), transparent 60%),
+        radial-gradient(1000px 700px at -10% 20%, rgba(34,197,94,.20), transparent 60%),
+        var(--bg);
+      color:var(--text); line-height:1.6
+    }
+    img{max-width:100%;height:auto;display:block}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:var(--maxw);margin:0 auto;padding:0 var(--space)}
+
+    /* Header / Nav */
+    header{
+      position:sticky;top:0;z-index:50;
+      background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,0));
+      backdrop-filter:saturate(140%) blur(6px)
+    }
+    nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:calc(var(--space)*0.7) 0}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800}
+    .logo{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;color:white;background:conic-gradient(from 200deg,#22c55e,#7c3aed,#60a5fa,#22c55e);box-shadow:var(--shadow)}
+
+    /* Mobile nav */
+    .nav-toggle{
+      display:inline-flex;align-items:center;justify-content:center;
+      width:42px;height:42px;border-radius:12px;border:1px solid #ffffff29;
+      background:rgba(255,255,255,.06);color:var(--text);cursor:pointer
+    }
+    .navlinks{
+      display:none; /* mobile default */
+      flex-direction:column;gap:8px;position:absolute;right:var(--space);top:64px;
+      background:var(--surface);border:1px solid #ffffff1a;border-radius:14px;
+      padding:10px; box-shadow:var(--shadow)
+    }
+    .navlinks a{padding:10px 12px;border-radius:999px;color:var(--text);opacity:.92;white-space:nowrap}
+    .navlinks a:hover{background:rgba(124,58,237,.14);text-decoration:none}
+    .navlinks.open{display:flex}
+
+    /* Desktop nav */
+    @media (min-width: 720px){
+      .nav-toggle{display:none}
+      .navlinks{display:flex !important;position:static;flex-direction:row;background:transparent;border:none;box-shadow:none;padding:0}
+    }
+
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid rgba(124,58,237,.45);background:linear-gradient(180deg,rgba(124,58,237,.16),rgba(124,58,237,.08));color:var(--text);box-shadow:var(--shadow)}
+
+    /* Hero */
+    .hero{padding:clamp(48px,6vw,90px) 0;display:grid;grid-template-columns:1fr;gap:18px;align-items:center}
+    .kicker{color:#22c55e;font-weight:800;letter-spacing:.28em;font-size:.75rem;text-transform:uppercase}
+    h1{font-size:clamp(26px,4.5vw,56px);line-height:1.1;margin:8px 0 12px}
+    .subtitle{font-size:clamp(14px,1.15vw + 10px,18px);color:var(--muted);max-width:65ch}
+    .hero-ctas{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+    .hero img{width:100%;border-radius:16px;box-shadow:var(--shadow);border:1px solid #ffffff18}
+    @media (min-width: 900px){ .hero{grid-template-columns:1.2fr .8fr;gap:26px} }
+
+    section{padding:40px 0}
+    .section-title{font-size:24px;margin:0 0 16px;display:flex;align-items:center;gap:10px}
+    .section-title .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 6px rgba(124,58,237,.18)}
+
+    /* Cards / grids */
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+    .card{grid-column:span 12;background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0));border:1px solid #ffffff14;border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+
+    /* Skills / chips */
+    .skills,.chips{display:flex;flex-wrap:wrap;gap:10px}
+    .chip,.skill{background:#00000033;border:1px solid #ffffff1a;color:var(--text);padding:8px 12px;border-radius:999px;font-size:14px}
+
+    /* Projects: responsive cards */
+    #projectsGrid{display:grid;grid-template-columns:1fr;gap:18px}
+    .proj-wrap{grid-column:span 12}
+    .proj{display:grid;grid-template-columns:1fr;gap:12px;align-items:start}
+    @media (min-width: 720px){
+      #projectsGrid{grid-template-columns:repeat(2, 1fr)}
+      .proj{grid-template-columns:1.1fr .9fr}
+    }
+    .proj h3{margin:0 0 6px}
+    .tags{display:flex;gap:8px;flex-wrap:wrap}
+    .tag{font-size:12px;background:#7c3aed22;color:black;border:1px solid #7c3aed55;padding:6px 10px;border-radius:999px}
+    .proj img{width:100%;border-radius:12px;border:1px solid #ffffff18;object-fit:cover}
+
+    /* Timeline (unused right now) */
+    .timeline{border-left:2px dashed #ffffff2a;margin-left:10px;padding-left:16px}
+    .titem{margin:0 0 18px} .titem h4{margin:0} .titem small{color:var(--muted)}
+
+    /* Contact */
+    .contact{display:grid;grid-template-columns:1fr;gap:18px}
+    @media (min-width:900px){ .contact{grid-template-columns:1fr 1fr} }
+    .contact .card{padding:22px}
+    .contact form{display:grid;gap:12px}
+    input,textarea{
+      width:100%;padding:12px 14px;border-radius:12px;border:1px solid #ffffff22;
+      background:#fff;color:#0e141b; /* readable on white even in dark mode */
+    }
+    textarea{min-height:120px;resize:vertical}
+
+    /* Stats */
+    .stats{display:flex;gap:12px;flex-wrap:wrap}
+    .stat{flex:1;min-width:160px;text-align:center;padding:14px;border:1px dashed #ffffff2a;border-radius:12px}
+    .stat h3{margin:4px 0 0}
+
+    footer{padding:28px 0 60px;color:var(--muted);text-align:center}
+
+    /* Motion polish */
+    @media (prefers-reduced-motion: no-preference){
+      .btn, .navlinks a{transition:transform .15s ease, background-color .2s ease}
+      .btn:hover{transform:translateY(-1px)}
+    }
+
+    /* Utility */
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  </style>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Avi Italiya",
+    "jobTitle": "React Frontend/Backend Developer",
+    "alumniOf": [
+      { "@type":"CollegeOrUniversity","name":"Sarvajanik College of Engineering & Technology (SCET)","address":{"@type":"PostalAddress","addressLocality":"Surat","addressRegion":"Gujarat","addressCountry":"IN"} },
+      { "@type":"CollegeOrUniversity","name":"Shri Shambhubhai V. Patel College of Computer Science and Business Management","address":{"@type":"PostalAddress","addressLocality":"Surat","addressRegion":"Gujarat","addressCountry":"IN"},"parentOrganization":{"@type":"CollegeOrUniversity","name":"Veer Narmad South Gujarat University (VNSGU)"} }
+    ],
+    "email": "mailto:avikitaliya2018@gmail.com",
+    "url": "http://127.0.0.1:5500/index2.html",
+    "sameAs": ["https://github.com/Avi2124","https://www.linkedin.com/in/avi-italiya-6904a4326/"],
+    "knowsAbout": ["React","Node.js","Express","MongoDB","MySQL","JavaScript","PHP","Java"]
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="brand"><div class="logo">AI</div> Avi Italiya</div>
+
+        <!-- Mobile toggle + collapsible nav -->
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+        <div class="navlinks" id="primaryNav">
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#education">Education</a>
+          <a href="#resume">Resume Data</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <div class="kicker">MCA @ SCET • Surat, Gujarat</div>
+        <h1>React Frontend/Backend Developer building fast, accessible web apps.</h1>
+        <p class="subtitle">MCA student at <strong>Sarvajanik College of Engineering & Technology</strong> (SCET). Focus: ReactJS frontends and Node.js/Express backends with MongoDB/MySQL. Open to internships and full-time roles.</p>
+        <div class="hero-ctas">
+          <a class="btn" href="#projects">See Projects</a>
+          <a class="btn" href="mailto:avikitaliya2018@gmail.com">Hire Me</a>
+          <a class="btn" href="Avi%20resume.pdf" download>Download Résumé</a>
+        </div>
+        <div class="stats" style="margin-top:16px">
+          <div class="stat"><div>CGPA (MCA)</div><h3 id="cgpa">8.22</h3></div>
+          <div class="stat"><div>Projects</div><h3 id="projcount">2</h3></div>
+          <div class="stat"><div>Open to</div><h3>Frontend • Backend • MERN</h3></div>
+        </div>
+      </div>
+      <img alt="Coding setup" src="Screenshot%202025-09-06%20151033.png"/>
+    </section>
+
+    <!-- OBJECTIVE -->
+    <section id="resume">
+      <h2 class="section-title"><span class="dot"></span>Resume Data</h2>
+      <div class="card">
+        <h3 style="margin-top:0">Objective</h3>
+        <p id="objective"></p>
+        <div style="margin-top:10px">
+          <strong>Types included in my resume:</strong>
+          <div class="chips" id="resumeTypes"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LANGUAGES -->
+    <section id="languages">
+      <h2 class="section-title"><span class="dot"></span>Languages</h2>
+      <div class="card">
+        <div class="chips" id="langChips"></div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h2 class="section-title"><span class="dot"></span>Skills</h2>
+      <div class="card">
+        <div class="skills" id="skillsList"></div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2 class="section-title"><span class="dot"></span>Projects</h2>
+      <div id="projectsGrid"></div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <h2 class="section-title"><span class="dot"></span>Education</h2>
+
+      <div class="card">
+        <h3>M.C.A. — Sarvajanik College of Engineering & Technology (SCET)</h3>
+        <p><strong>Surat, Gujarat</strong> • 2024 – Present • CGPA: <span id="mcaCgpa">8.22</span></p>
+        <div class="chips" id="coursework"></div>
+      </div>
+
+      <div class="card" style="margin-top:18px">
+        <h3>B.C.A. — Shri Shambhubhai V. Patel College of Computer Science and Business Management</h3>
+        <p><strong>Surat, Gujarat</strong> • Affiliated to <strong>VNSGU</strong> • 2021 – 2024 • CGPA: <span id="bcaCgpa">7.01</span></p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2 class="section-title"><span class="dot"></span>Contact</h2>
+      <div class="contact">
+        <div class="card">
+          <h3>Let's work together</h3>
+          <p>Have a role or project in mind? Send a message — I reply quickly.</p>
+          <form id="contactForm" onsubmit="handleSubmit(event)">
+            <input type="text" name="name" placeholder="Your name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <textarea name="message" placeholder="Message" required></textarea>
+            <button class="btn" type="submit">Send message</button>
+            <p id="formStatus" aria-live="polite" style="margin:8px 0 0;color:var(--muted)"></p>
+          </form>
+        </div>
+        <div class="card">
+          <h3>Elsewhere</h3>
+          <p>
+            <strong>Phone:</strong> 7567040745<br>
+            <strong>Email:</strong> <a href="mailto:avikitaliya2018@gmail.com">avikitaliya2018@gmail.com</a><br>
+            <strong>GitHub:</strong> <a href="https://github.com/Avi2124" target="_blank" rel="noreferrer">Avi2124</a><br>
+            <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/avi-italiya-6904a4326/" target="_blank" rel="noreferrer">avi-italiya-6904a4326</a>
+          </p>
+          <p class="muted">63, Vasanjipark Society, B/H Mahadev Mandir, Katargam, Surat - 395004</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="year"></span> Avi Italiya • Built with plain HTML/CSS/JS</div>
+  </footer>
+
+  <script>
+    // ====== Data from your resume ======
+    const RESUME = {
+      objective:
+        "To apply my full-stack development skills, including expertise in ReactJS and NodeJS in a dynamic and growth-oriented environment. Eager to contribute innovative solutions, collaborate effectively, and advance my career in web development.",
+      types: ["Objective","Languages","Education","Skills","Projects","Contact"],
+      languages: ["Gujarati","Hindi","English"],
+      contacts: {
+        phone: "7567040745",
+        email: "avikitaliya2018@gmail.com",
+        github: "https://github.com/Avi2124",
+        linkedin: "https://www.linkedin.com/in/avi-italiya-6904a4326/"
+      },
+      education: {
+        mca: { college: "Sarvajanik College of Engineering & Technology (SCET)", city: "Surat", years: "2024 – Present", cgpa: "8.22" },
+        bca: { college: "Shri Shambhubhai V. Patel College of Computer Science and Business Management (VNSGU)", city: "Surat", years: "2021 – 2024", cgpa: "7.01" }
+      },
+      skills: [
+        "Java","PHP","Python","ReactJS","HTML","CSS","JavaScript","JSON",
+        "MySQL","MongoDB","Data Structures & Algorithms","Problem-solving","OOP (Java)"
+      ],
+      projects: [
+        {
+          title: "College Management System",
+          desc: "Robust PHP + MySQL system for faculty, students, and admin. Role-based access, assignment upload, attendance tracking, user profile management. Integrated Ajax for dynamic UX; collaborated with a team for on-time delivery.",
+          img: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop",
+          links: [],
+          tags: ["PHP","MySQL","Ajax"]
+        },
+        {
+          title: "EliteWear E-commerce",
+          desc: "Full e-commerce web app for online clothing retail. Customer & admin modules, secure payment gateway, real-time inventory, analytics.",
+          img: "https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1200&auto=format&fit=crop",
+          links: [],
+          tags: ["PHP (Laravel)","HTML/CSS","JavaScript","MySQL"]
+        }
+      ],
+      coursework: ["Data Structures & Algorithms","DBMS","Python","Computer Networks","Software Engineering","OOP (Java)","Java Web Technologies","Cloud Fundamentals"],
+      stats: { mcaCgpa: "8.22", bcaCgpa: "7.01", projects: 2, grad: "May 2026" }
+    };
+
+    // ====== Nav: hamburger toggle ======
+    const navToggle = document.getElementById('navToggle');
+    const primaryNav = document.getElementById('primaryNav');
+    navToggle.addEventListener('click', () => {
+      const open = primaryNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    // Close menu when a link is clicked (mobile)
+    primaryNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      primaryNav.classList.remove('open'); navToggle.setAttribute('aria-expanded','false');
+    }));
+
+    // ====== Renderers ======
+    // Objective + types
+    document.getElementById("objective").textContent = RESUME.objective;
+    const typesEl = document.getElementById("resumeTypes");
+    RESUME.types.forEach(t => { const s=document.createElement("span"); s.className="chip"; s.textContent=t; typesEl.appendChild(s); });
+
+    // Languages
+    const langChips = document.getElementById("langChips");
+    RESUME.languages.forEach(l => { const c=document.createElement("span"); c.className="chip"; c.textContent=l; langChips.appendChild(c); });
+
+    // Skills
+    const skillsList = document.getElementById("skillsList");
+    RESUME.skills.forEach(s => { const el=document.createElement("span"); el.className="skill"; el.textContent=s; skillsList.appendChild(el); });
+
+    // Projects (responsive two-per-row on ≥720px)
+    const projectsGrid = document.getElementById("projectsGrid");
+    RESUME.projects.forEach(p => {
+      const wrap=document.createElement("div");
+      wrap.className='proj-wrap card';
+      const card=document.createElement("div");
+      card.className="proj";
+      card.innerHTML = `
+        <div>
+          <h3>${p.title}</h3>
+          <p>${p.desc}</p>
+          <div class="tags">${p.tags.map(t=>`<span class='tag'>${t}</span>`).join('')}</div>
+        </div>
+        <img alt="${p.title}" src="${p.img}"/>
+      `;
+      wrap.appendChild(card);
+      projectsGrid.appendChild(wrap);
+    });
+
+    // Coursework chips under MCA card
+    const coursework = document.getElementById("coursework");
+    RESUME.coursework.forEach(c => { const chip=document.createElement("span"); chip.className="chip"; chip.textContent=c; coursework.appendChild(chip); });
+
+    // Stats + year
+    document.getElementById("cgpa").textContent = RESUME.stats.mcaCgpa;
+    document.getElementById("mcaCgpa").textContent = RESUME.stats.mcaCgpa;
+    document.getElementById("bcaCgpa").textContent = RESUME.stats.bcaCgpa;
+    document.getElementById("projcount").textContent = RESUME.stats.projects;
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Contact form -> mailto (works if a mail handler is set)
+    function handleSubmit(e){
+      e.preventDefault();
+      const data=new FormData(e.target);
+      const name=encodeURIComponent(data.get('name'));
+      const email=encodeURIComponent(data.get('email'));
+      const message=encodeURIComponent(data.get('message'));
+      const subject=`Portfolio Inquiry from ${name}`;
+      const body=`From: ${name}%0AEmail: ${email}%0A%0A${message}`;
+      window.location.href=`mailto:${RESUME.contacts.email}?subject=${subject}&body=${body}`;
+      document.getElementById('formStatus').textContent='Opening your email client…';
+    }
+  </script>
+</body>
+</html>

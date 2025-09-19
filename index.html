@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Avi Italiya Portfolio</title>
-  <meta name="description" content="Portfolio of Avi Italiya (MCA @ SCET) — React/Node developer. Projects, skills, objective, languages, education, and contact."/>
+  <meta name="description" content="Portfolio of Avi Italiya — Full-stack (React/Node, PHP/Laravel, MERN). Projects, skills, objective, languages, education, and contact."/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -102,10 +102,6 @@
     .tag{font-size:12px;background:#7c3aed22;color:black;border:1px solid #7c3aed55;padding:6px 10px;border-radius:999px}
     .proj img{width:100%;border-radius:12px;border:1px solid #ffffff18;object-fit:cover}
 
-    /* Timeline (unused right now) */
-    .timeline{border-left:2px dashed #ffffff2a;margin-left:10px;padding-left:16px}
-    .titem{margin:0 0 18px} .titem h4{margin:0} .titem small{color:var(--muted)}
-
     /* Contact */
     .contact{display:grid;grid-template-columns:1fr;gap:18px}
     @media (min-width:900px){ .contact{grid-template-columns:1fr 1fr} }
@@ -113,7 +109,7 @@
     .contact form{display:grid;gap:12px}
     input,textarea{
       width:100%;padding:12px 14px;border-radius:12px;border:1px solid #ffffff22;
-      background:#fff;color:#0e141b; /* readable on white even in dark mode */
+      background:#fff;color:#0e141b;
     }
     textarea{min-height:120px;resize:vertical}
 
@@ -124,13 +120,10 @@
 
     footer{padding:28px 0 60px;color:var(--muted);text-align:center}
 
-    /* Motion polish */
     @media (prefers-reduced-motion: no-preference){
       .btn, .navlinks a{transition:transform .15s ease, background-color .2s ease}
       .btn:hover{transform:translateY(-1px)}
     }
-
-    /* Utility */
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
   </style>
 
@@ -139,16 +132,15 @@
   {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "Avi Italiya",
-    "jobTitle": "React Frontend/Backend Developer",
+    "name": "Italiya Avikumar Kunvarjibhai",
+    "jobTitle": "Full-Stack Web Developer (React/Node, PHP/Laravel)",
     "alumniOf": [
       { "@type":"CollegeOrUniversity","name":"Sarvajanik College of Engineering & Technology (SCET)","address":{"@type":"PostalAddress","addressLocality":"Surat","addressRegion":"Gujarat","addressCountry":"IN"} },
       { "@type":"CollegeOrUniversity","name":"Shri Shambhubhai V. Patel College of Computer Science and Business Management","address":{"@type":"PostalAddress","addressLocality":"Surat","addressRegion":"Gujarat","addressCountry":"IN"},"parentOrganization":{"@type":"CollegeOrUniversity","name":"Veer Narmad South Gujarat University (VNSGU)"} }
     ],
     "email": "mailto:avikitaliya2018@gmail.com",
-    "url": "http://127.0.0.1:5500/index2.html",
     "sameAs": ["https://github.com/Avi2124","https://www.linkedin.com/in/avi-italiya-6904a4326/"],
-    "knowsAbout": ["React","Node.js","Express","MongoDB","MySQL","JavaScript","PHP","Java"]
+    "knowsAbout": ["ReactJS","NodeJS","PHP","Laravel","MongoDB","MySQL","JavaScript","Java","Python","MERN","Stripe","Razorpay"]
   }
   </script>
 </head>
@@ -176,16 +168,16 @@
     <section class="hero">
       <div>
         <div class="kicker">MCA @ SCET • Surat, Gujarat</div>
-        <h1>React Frontend/Backend Developer building fast, accessible web apps.</h1>
-        <p class="subtitle">MCA student at <strong>Sarvajanik College of Engineering & Technology</strong> (SCET). Focus: ReactJS frontends and Node.js/Express backends with MongoDB/MySQL. Open to internships and full-time roles.</p>
+        <h1>Full-stack developer (React/Node & PHP/Laravel) building fast, accessible web apps.</h1>
+        <p class="subtitle">MCA student at <strong>Sarvajanik College of Engineering & Technology</strong> (SCET). Focus: React/Node back-ends, PHP/Laravel, MongoDB/MySQL, and MERN. Open to internships and full-time roles.</p>
         <div class="hero-ctas">
           <a class="btn" href="#projects">See Projects</a>
           <a class="btn" href="mailto:avikitaliya2018@gmail.com">Hire Me</a>
-          <a class="btn" href="Avi%20rResume.pdf" download>Download Résumé</a>
+          <a class="btn" href="Avi_Resume.pdf" download>Download Résumé</a>
         </div>
         <div class="stats" style="margin-top:16px">
-          <div class="stat"><div>CGPA (MCA)</div><h3 id="cgpa">8.22</h3></div>
-          <div class="stat"><div>Projects</div><h3 id="projcount">2</h3></div>
+          <div class="stat"><div>CGPA (MCA)</div><h3 id="cgpa">8.09</h3></div>
+          <div class="stat"><div>Projects</div><h3 id="projcount">3</h3></div>
           <div class="stat"><div>Open to</div><h3>Frontend • Backend • MERN</h3></div>
         </div>
       </div>
@@ -233,13 +225,14 @@
 
       <div class="card">
         <h3>M.C.A. — Sarvajanik College of Engineering & Technology (SCET)</h3>
-        <p><strong>Surat, Gujarat</strong> • 2024 – Present • CGPA: <span id="mcaCgpa">8.22</span></p>
+        <p><strong>Surat, Gujarat</strong> • 2024 – Present • CGPA: <span id="mcaCgpa">8.09</span></p>
         <div class="chips" id="coursework"></div>
       </div>
 
       <div class="card" style="margin-top:18px">
-        <h3>B.C.A. — Shri Shambhubhai V. Patel College of Computer Science and Business Management</h3>
-        <p><strong>Surat, Gujarat</strong> • Affiliated to <strong>VNSGU</strong> • 2021 – 2024 • CGPA: <span id="bcaCgpa">7.01</span></p>
+        <h3>B.C.A. — Veer Narmad South Gujarat University (VNSGU)</h3>
+        <p><strong>Surat, Gujarat</strong> • 2021 – 2024 • CGPA: <span id="bcaCgpa">7.01</span><br/>
+        College: Shri Shambhubhai V. Patel College of Computer Science and Business Management</p>
       </div>
     </section>
 
@@ -264,9 +257,10 @@
             <strong>Phone:</strong> 7567040745<br>
             <strong>Email:</strong> <a href="mailto:avikitaliya2018@gmail.com">avikitaliya2018@gmail.com</a><br>
             <strong>GitHub:</strong> <a href="https://github.com/Avi2124" target="_blank" rel="noreferrer">Avi2124</a><br>
-            <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/avi-italiya-6904a4326/" target="_blank" rel="noreferrer">avi-italiya-6904a4326</a>
+            <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/avi-italiya-6904a4326/" target="_blank" rel="noreferrer">avi-italiya-6904a4326</a><br>
+            <strong>DOB:</strong> 13/10/2003
           </p>
-          <p class="muted">63, Vasanjipark Society, B/H Mahadev Mandir, Katargam, Surat - 395004</p>
+          <p class="muted">63, Vasanjipark Society, B/H Mahadev Mandir, Katargam, Surat, Gujarat — 395004</p>
         </div>
       </div>
     </section>
@@ -290,31 +284,45 @@
         linkedin: "https://www.linkedin.com/in/avi-italiya-6904a4326/"
       },
       education: {
-        mca: { college: "Sarvajanik College of Engineering & Technology (SCET)", city: "Surat", years: "2024 – Present", cgpa: "8.22" },
+        mca: { college: "Sarvajanik College of Engineering & Technology (SCET)", city: "Surat", years: "2024 – Present", cgpa: "8.09" },
         bca: { college: "Shri Shambhubhai V. Patel College of Computer Science and Business Management (VNSGU)", city: "Surat", years: "2021 – 2024", cgpa: "7.01" }
       },
       skills: [
-        "Java","PHP","Python","ReactJS","HTML","CSS","JavaScript","JSON",
-        "MySQL","MongoDB","Data Structures & Algorithms","Problem-solving","OOP (Java)"
+        "React Js",
+        "Node Js",
+        "Web Development: HTML, CSS, JavaScript, JSON",
+        "Programming Languages: Java, PHP, Python",
+        "Database Management: MySQL, MongoDB",
+        "Data Structures"
       ],
       projects: [
         {
-          title: "College Management System",
-          desc: "Robust PHP + MySQL system for faculty, students, and admin. Role-based access, assignment upload, attendance tracking, user profile management. Integrated Ajax for dynamic UX; collaborated with a team for on-time delivery.",
+          title: "College Management System (in PHP, MySQL)",
+          desc: "Robust system enabling seamless management of faculty, students, and administrative tasks. Role-based access control, assignment upload, attendance tracking, user profile management, and AJAX-powered UX improvements.",
           img: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop",
           links: [],
           tags: ["PHP","MySQL","Ajax"]
         },
         {
-          title: "EliteWear E-commerce",
-          desc: "Full e-commerce web app for online clothing retail. Customer & admin modules, secure payment gateway, real-time inventory, analytics.",
+          title: "EliteWear E-commerce (PHP - Laravel)",
+          desc: "Responsive e-commerce web app for online clothing retail. Customer & admin modules, secure payment gateway integration, real-time inventory management, analytics. Stack: PHP (Laravel), HTML/CSS, JavaScript, MySQL.",
           img: "https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1200&auto=format&fit=crop",
           links: [],
-          tags: ["PHP (Laravel)","HTML/CSS","JavaScript","MySQL"]
+          tags: ["Laravel","PHP","JavaScript","MySQL","HTML/CSS"]
+        },
+        {
+          title: "E-Commerce Website (MERN Stack, Stripe, Razorpay, Vercel)",
+          desc: "MERN e-commerce platform with product browsing, filtering, cart, and order management. Integrated Stripe and Razorpay payment gateways plus Cash on Delivery. Admin dashboard for products and orders, JWT authentication, and RESTful APIs. Deployed on Vercel.",
+          img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop",
+          links: [],
+          tags: ["MERN","Stripe","Razorpay","JWT","REST APIs","Vercel"]
         }
       ],
-      coursework: ["Data Structures & Algorithms","DBMS","Python","Computer Networks","Software Engineering","OOP (Java)","Java Web Technologies","Cloud Fundamentals"],
-      stats: { mcaCgpa: "8.22", bcaCgpa: "7.01", projects: 2, grad: "May 2026" }
+      coursework: [
+        "Data Structures & Algorithms","DBMS","Python","Computer Networks",
+        "Software Engineering","OOP (Java)","Web Technologies"
+      ],
+      stats: { mcaCgpa: "8.09", bcaCgpa: "7.01", projects: 3, grad: "—" }
     };
 
     // ====== Nav: hamburger toggle ======
@@ -324,7 +332,6 @@
       const open = primaryNav.classList.toggle('open');
       navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
-    // Close menu when a link is clicked (mobile)
     primaryNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
       primaryNav.classList.remove('open'); navToggle.setAttribute('aria-expanded','false');
     }));
@@ -343,7 +350,7 @@
     const skillsList = document.getElementById("skillsList");
     RESUME.skills.forEach(s => { const el=document.createElement("span"); el.className="skill"; el.textContent=s; skillsList.appendChild(el); });
 
-    // Projects (responsive two-per-row on ≥720px)
+    // Projects
     const projectsGrid = document.getElementById("projectsGrid");
     RESUME.projects.forEach(p => {
       const wrap=document.createElement("div");
@@ -373,7 +380,7 @@
     document.getElementById("projcount").textContent = RESUME.stats.projects;
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Contact form -> mailto (works if a mail handler is set)
+    // Contact form -> mailto
     function handleSubmit(e){
       e.preventDefault();
       const data=new FormData(e.target);
